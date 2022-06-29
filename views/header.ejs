@@ -1,0 +1,58 @@
+<header>
+    <script>
+        // https://www.npmjs.com/package/notyf to refer from
+        
+        <% if (flash.success && flash.success.length > 0) {%>
+            const notyf = new Notyf();
+
+            notyf.open({
+                duration: 1500,
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                type: 'success',
+                message: '<%= flash.success %>'
+            });
+        <% } else if (flash.custom && flash.custom.length > 0) {%>
+            const notyf = new Notyf({
+                types: [
+                {
+                    type: 'custom',
+                    background: 'orange'
+                }
+            ]
+        });
+
+            notyf.open({
+                duration: 1500,
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                type: 'custom',
+                message: '<%= flash.custom %>'
+            });
+        <%} %>
+    </script>
+    <nav class="navbar justify-content-between">
+
+        <a class="navbar-brand">Codeial</a>
+        <% if (locals.user){ %>
+            <ul>
+                <a href="/users/"><button class="btn btn-outline-success my-2 my-sm-0">Home</button>
+                </a>
+
+                <a href="/users/logout"><button class="btn btn-outline-success my-2 my-sm-0">Logout</button></a>
+            </ul>
+
+            <% }else{ %>
+                <ul>
+                    <a href="/users/login"><button class="btn btn-outline-success my-2 my-sm-0">Login</button></a>
+                    <a href="/users/sign-up"><button class="btn btn-outline-success my-2 my-sm-0">Sign
+                            Up</button></a>
+                </ul>
+                <% } %>
+
+    </nav>
+</header>

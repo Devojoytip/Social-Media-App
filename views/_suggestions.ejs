@@ -1,0 +1,21 @@
+<% if(user) {%>
+  <div class="card text-center my-3" style="font-family: 'Trebuchet MS'; width: 90%; margin: auto;">
+    <h4 class="card-header">
+      Suggestions
+    </h4>
+    <% for(u of all_users) {%>
+      <% if(u.id!==user.id) {%>
+        <div class="list-group" style="width: 100%;">
+        
+            <a href="/users/profile/<%= u.id %> " class="list-group-item list-group-item-action list-group-item-warning" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= u.username %></h5>
+                <small>Joined <%= u.createdAt.toString().slice(0,15) %></small>
+              </div>
+            </a>
+           
+          </div> 
+    <% } %> 
+  <% } %> 
+    </div>
+<% } %>  

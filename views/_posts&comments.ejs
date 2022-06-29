@@ -1,0 +1,33 @@
+<div class="post-comments-list">
+    <ul id="post-comments-<%= element._id %>">
+        <% element.comments.forEach(comm=>{ %>
+            <div class="my-3">
+                <% if(comm.user.id===user.id) {%>
+                    <span class="badge badge-info">You</span>commented
+                    <% }else{ %>
+                        <span class="badge badge-warning">
+                            <%= comm.user.username %>
+                        </span>commented
+                        <!-- <span class="badge text-bg-warning">Warning</span> -->
+                        <% } %>
+                        <% if(element.user.id===user.id || comm.user.id===user.id) {%>
+                            <a href="/comments/delete-comment/<%= comm.id %> ">
+                                <i style="color: black;" class="fas fa-solid fa-trash"></i>
+                            </a>
+                            <% } %>
+                            <br>
+                            <%= comm.content %> 
+                            <% if(comm.user.id!==user.id) {%>
+                                <a href="/likes/toggle?id=<%= comm.id %>&type=Comment">
+                                    <i class="fas fa-light fa-thumbs-up"></i>
+                                </a>
+                                <% } %>  
+                                <span class="badge badge-info">
+                                    <%= comm.likes.length %> likes
+                                </span>
+                                  </button>
+                                
+            </div>
+            <% }) %>
+    </ul>
+</div>

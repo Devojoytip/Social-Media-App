@@ -1,0 +1,28 @@
+<div class="card-body flex-fill mb-3" id="post-<%= element.id %> ">
+    <% if(element.user.id===user.id){ %>
+        <h5 class="card-title">By <span class="badge badge-success">You</span>
+            <% }else{ %>
+                <h5 class="card-title">By <%= element.user.username %>
+                </h5>
+                <% } %>
+                    <h6 class="card-subtitle mb-2 text-muted">Posted on <%=
+                            element.createdAt.toString().slice(0,15) %>
+                    </h6>
+                    <p class="card-text">
+                        <%= element.content %>
+                    </p>
+                    <% if (element.user.id===user.id) {%>
+                        <a class="delete-post-btn" href="/posts/delete-post/<%= element.id %> ">
+                            <button class="btn btn-danger">Remove Post</button>
+                        </a>
+                    <% } %>
+                    <% if (element.user.id!==user.id) {%>
+                        <a href="/likes/toggle?id=<%= element.id %>&type=Post">
+                            <i class="fas fa-thin fa-heart" style="color: red;" ></i>
+                        </a>
+                        <% } %>
+                        <span class="badge badge-success">
+                            <%= element.likes.length %> likes
+                        </span>
+                         
+</div>

@@ -1,0 +1,38 @@
+<div class="card text-center my-3" style="font-family: 'Trebuchet MS'; width: 90%; margin: auto;">
+    <h4 class="card-header">
+        Friends
+    </h4>
+    <% for(let i=0;i<friendships_list.length;i++) {%>
+        <% if(friendships_list[i].from_user.id===user.id) {%>
+            <% let friend= friendships_list[i].to_user %>
+            <div class="list-group" style="width: 100%;">
+                <a href="/users/profile/<%= friend.id %> "
+                    class="list-group-item list-group-item-action list-group-item-warning" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= friend.username %>
+                        </h5>
+                        <small>
+                            Joined <%= friend.createdAt.toString().slice(0,15) %>
+                        </small>
+                    </div>
+                </a>
+            </div>
+        <%} else if(friendships_list[i].to_user.id===user.id) {%>
+            <% let friend= friendships_list[i].from_user %> 
+            <div class="list-group" style="width: 100%;">
+                <a href="/users/profile/<%= friend.id %> "
+                    class="list-group-item list-group-item-action list-group-item-warning" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            <%= friend.username %>
+                        </h5>
+                        <small>
+                            Joined <%= friend.createdAt.toString().slice(0,15) %>
+                        </small>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+                <% } %>
+</div>

@@ -1,0 +1,7 @@
+<div class="comments-div">
+    <form action="/comments/create-comment" method="post">
+        <input type="text" name="content" id="" placeholder="Comment here" required>
+        <input type="hidden" name="post" value=<%=element._id %> >
+        <button class="btn btn-primary my-3">Add Comment</button>
+    </form>
+</div>

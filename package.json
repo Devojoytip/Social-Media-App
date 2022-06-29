@@ -1,0 +1,39 @@
+{
+  "name": "social_media_app",
+  "version": "1.0.0",
+  "description": "A basic social media app",
+  "main": "index.js",
+  "scripts": {
+    "type": "module",
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod_start":"NODE_ENV=production nodemon index.js"
+  },
+  "author": "DEVOJOYTI PAL",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.0-beta1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "kue": "^0.11.1",
+    "mongoose": "^6.3.4",
+    "multer": "^1.4.5-lts.1",
+    "node-sass-middleware": "^1.0.1",
+    "nodemailer": "^6.7.5",
+    "noty": "^3.2.0-beta-deprecated",
+    "notyf": "^3.10.0",
+    "notyf-js": "^2.1.2",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.5.1"
+  }
+}
