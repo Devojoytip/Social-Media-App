@@ -5,7 +5,7 @@ const env = require('./environment');
 
 // connect to db
 async function main() {
-    await mongoose.connect(`mongodb://localhost:27017/${env.db}`);
+    await mongoose.connect(`mongodb://localhost:27017/social_media_app_db`);
 }
 
 // acquire connection to check if its successful
