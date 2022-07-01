@@ -29,7 +29,7 @@ module.exports.createSession = async (req, res) => {
                 message: 'Sign in successfully ',
                 name_of_user:user.username,
                 data: {
-                    token: jwt.sign( user.toJSON(), env.jwt_secret, { expiresIn: '100000' })
+                    token: jwt.sign( user.toJSON(), 'my secret key', { expiresIn: '100000' })
                     // user.toJSON() IS ENCRYPTED
                 }
             })
@@ -40,6 +40,4 @@ module.exports.createSession = async (req, res) => {
             message:'Internal server error'
         });
     }
-
-
 }
