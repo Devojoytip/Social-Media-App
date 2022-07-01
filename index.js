@@ -33,38 +33,38 @@ console.log('Chat Server listening on port 5000');
 
 const path = require('path');
 
-// app.use(sassMiddleware({
-//     // src- from where to access files
-//     src: './assets/scss',
-//     // dest- where to put css files
-//     dest: './assets/css',
-//     // debug: if true shows error during conversion of file
-//     debug: true,
-//     //outputStyle
-//     outputStyle: 'expanded',
-//     //prefix - where shud server look for css files
-//     prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-// }));
+app.use(sassMiddleware({
+    // src- from where to access files
+    src: './assets/scss',
+    // dest- where to put css files
+    dest: './assets/css',
+    // debug: if true shows error during conversion of file
+    debug: true,
+    //outputStyle
+    outputStyle: 'expanded',
+    //prefix - where shud server look for css files
+    prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
 
-if (env.name==='development') {
-    app.use(sassMiddleware({
-        // src- from where to access files
-        src: path.join(__dirname,env.asset_path,'scss'),
-        // dest- where to put css files
-        dest: path.join(__dirname,env.asset_path,'css'),
-        // debug: if true shows error during conversion of file
-        debug: true,
-        //outputStyle
-        outputStyle: 'expanded',
-        //prefix - where shud server look for css files
-        prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-    }));
-}
+// if (env.name==='development') {
+//     app.use(sassMiddleware({
+//         // src- from where to access files
+//         src: path.join(__dirname,'./assets','scss'),
+//         // dest- where to put css files
+//         dest: path.join(__dirname,'./assets','css'),
+//         // debug: if true shows error during conversion of file
+//         debug: true,
+//         //outputStyle
+//         outputStyle: 'expanded',
+//         //prefix - where shud server look for css files
+//         prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+//     }));
+// }
 
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static(env.asset_path));
+app.use(express.static('./assets'));
 // app.use(expressLayouts);
 
 // making uploads path available to browser
@@ -84,7 +84,7 @@ app.set('views', './views');
 app.use(session({
     name: 'social_media_app',
     //encryption key
-    secret: env.session_cookie_key,
+    secret: 'whiadcpaeqrgqvskgyeccipbyrmdlarwuqqltyiuojaixogujn',
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -121,5 +121,3 @@ app.listen(port, (err) => {
     }
     console.log(`Server running on port : ${port}`);
 })
-
-// STEP 11 in users.js
