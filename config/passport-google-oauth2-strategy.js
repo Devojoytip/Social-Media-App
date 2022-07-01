@@ -8,13 +8,13 @@ const env = require('./environment');
 
 // new google strategy
 passport.use(new googleStrategy({
-    clientID: env.google_client_ID,
-    clientSecret: env.google_client_Secret,
-    callbackURL: env.google_callback_URL,
+    clientID: '304845680120-q7jamgah1jr2a2946eju1a8svf9k79v9.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: "http://localhost:8000/users/auth/google/callback",
     passReqToCallback: true
 },
     // callback fn
-    function (req, accessToken, refreshToken, profile, done) {
+    function (accessToken, refreshToken, profile, done) {
         // as an user can have multiple email ids so array of email
         // find user
         User.findOne({ email: profile.emails[0].value }).exec((err, user) => {
