@@ -2,15 +2,16 @@ const passport = require('passport');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
-const User = require('../models/user');
 const env = require('./environment');
+const User = require('../models/user');
 
 // let opts = {};
 // opts.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
-// opts.secretOrKey = 'my secret key'; // shud be same as used in users_api as it will decrypt it
+// opts.secretOrKey = env.jwt_secret; // shud be same as used in users_api as it will decrypt it
+
 let opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: env.jwt_secret // shud be same as used in users_api as it will decrypt it
+    secretOrKey: 'my secret key' // shud be same as used in users_api as it will decrypt it
 };
 
 // need not to use password as we use jwt_payload.id
